@@ -23,6 +23,8 @@ class GameScene: SKScene {
     
     var swipeHandler: ((Swap) -> ())?
     
+    var selectionSprite = SKSpriteNode()
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder) is not used in this app")
     }
@@ -90,6 +92,7 @@ class GameScene: SKScene {
                 // 4
                 swipeFromColumn = column
                 swipeFromRow = row
+                showSelectionIndicatorForCookie(cookie)
             }
         }
     }
@@ -123,11 +126,15 @@ class GameScene: SKScene {
                 
                 // 5
                 swipeFromColumn = nil
+                hideSelectionIndicator()
             }
         }
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        if selectionSprite.parent != nil && swipeFromColumn != nil {
+            hideSelectionIndicator()
+        }
         swipeFromColumn = nil
         swipeFromRow = nil
     }
@@ -180,5 +187,45 @@ class GameScene: SKScene {
         let moveB = SKAction.moveTo(spriteA.position, duration: Duration)
         moveB.timingMode = .EaseOut
         spriteB.runAction(moveB)
+    }
+    
+    func showSelectionIndicatorForCookie(cookie: Cookie) {
+        if selectionSprite.parent != nil {
+            selectionSprite.removeFromParent()
+        }
+        
+        if let sprite = cookie.sprite {
+            let texture = SKTexture(imageNamed: cookie.cookieType.highlightedSpriteName)
+            selectionSprite.size = texture.size()
+            selectionSprite.runAction(SKAction.setTexture(texture))
+            
+            sprite.addChild(selectionSprite)
+            selectionSprite.alpha = 1.0
+        }
+    }
+    
+    func hideSelectionIndicator() {
+        selectionSprite.runAction(SKAction.sequence([
+            SKAction.fadeOutWithDuration(0.3),
+            SKAction.removeFromParent()]))
+    }
+    
+    func animateInvalidSwap(swap: Swap, completion: () -> ()) {
+        let spriteA = swap.cookieA.sprite!
+        let spriteB = swap.cookieB.sprite!
+        
+        spriteA.zPosition = 100
+        spriteB.zPosition = 90
+        
+        let Duration: NSTimeInterval = 0.2
+        
+        let moveA = SKAction.moveTo(spriteB.position, duration: Duration)
+        moveA.timingMode = .EaseOut
+        
+        let moveB = SKAction.moveTo(spriteA.position, duration: Duration)
+        moveB.timingMode = .EaseOut
+        
+        spriteA.runAction(SKAction.sequence([moveA, moveB]), completion: completion)
+        spriteB.runAction(SKAction.sequence([moveB, moveA]))
     }
 }
