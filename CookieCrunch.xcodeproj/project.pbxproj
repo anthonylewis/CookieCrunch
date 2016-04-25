@@ -24,6 +24,7 @@
 		EAB0E1141CCDB3F800CE5C7D /* Level_2.json in Resources */ = {isa = PBXBuildFile; fileRef = EAB0E10F1CCDB3F800CE5C7D /* Level_2.json */; };
 		EAB0E1151CCDB3F800CE5C7D /* Level_3.json in Resources */ = {isa = PBXBuildFile; fileRef = EAB0E1101CCDB3F800CE5C7D /* Level_3.json */; };
 		EAB0E1161CCDB3F800CE5C7D /* Level_4.json in Resources */ = {isa = PBXBuildFile; fileRef = EAB0E1111CCDB3F800CE5C7D /* Level_4.json */; };
+		EAB0E1181CCDBA0B00CE5C7D /* Swap.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB0E1171CCDBA0B00CE5C7D /* Swap.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		EAB0E10F1CCDB3F800CE5C7D /* Level_2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_2.json; sourceTree = "<group>"; };
 		EAB0E1101CCDB3F800CE5C7D /* Level_3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_3.json; sourceTree = "<group>"; };
 		EAB0E1111CCDB3F800CE5C7D /* Level_4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_4.json; sourceTree = "<group>"; };
+		EAB0E1171CCDBA0B00CE5C7D /* Swap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Swap.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,9 +91,10 @@
 				EA4299FC1CCD98EB00033FA7 /* Assets.xcassets */,
 				EA429A071CCD992C00033FA7 /* Sprites.atlas */,
 				EAB0E1021CCDB3B000CE5C7D /* Levels */,
+				EAB0E0FC1CCDAB8900CE5C7D /* Tile.swift */,
+				EAB0E1171CCDBA0B00CE5C7D /* Swap.swift */,
 				EA4299FE1CCD98EB00033FA7 /* LaunchScreen.storyboard */,
 				EA429A011CCD98EB00033FA7 /* Info.plist */,
-				EAB0E0FC1CCDAB8900CE5C7D /* Tile.swift */,
 			);
 			path = CookieCrunch;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 				EA4299F81CCD98EB00033FA7 /* GameViewController.swift in Sources */,
 				EA4299F21CCD98EB00033FA7 /* AppDelegate.swift in Sources */,
 				EA429A0C1CCD9BF400033FA7 /* Array2D.swift in Sources */,
+				EAB0E1181CCDBA0B00CE5C7D /* Swap.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
